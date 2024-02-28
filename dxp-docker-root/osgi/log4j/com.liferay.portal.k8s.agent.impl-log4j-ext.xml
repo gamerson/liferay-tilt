@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Configuration strict="true">
+	<Loggers>
+		<Logger level="DEBUG" name="com.liferay.portal.k8s.agent" />
+	</Loggers>
+</Configuration>

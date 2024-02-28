@@ -1,0 +1,6 @@
+apiVersion: v2
+name: liferaysamples
+type: application
+version: "0.1.0"
+appVersion: "0.1.0"
+description: Test chart to deploy Liferay Samples

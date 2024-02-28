@@ -1,0 +1,5 @@
+dxp:
+  # the DXP docker image to run
+  image: liferay/dxp:2023.q4.5
+  # the number of DXP replicas (sets up a DXP cluster)
+  replicas: 1

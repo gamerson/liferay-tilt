@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: &fullname {{ include "fullname" . }}
+  labels: &labels
+    {{- include "labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicas }}
+  podManagementPolicy: OrderedReady
+  selector:
+    matchLabels:
+      {{- include "selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      serviceAccountName: *fullname
+      containers:
+        - name: liferay
+          image: {{ .Values.image }}
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: *fullname
+          env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                secretKeyRef:
+                  name: *fullname
+                  key: namespace
+            - name: KUBERNETES_CERTIFICATE
+              valueFrom:
+                secretKeyRef:
+                  name: *fullname
+                  key: ca.crt
+            - name: KUBERNETES_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: *fullname
+                  key: token
+            - name: LIFERAY_JPDA_ENABLED
+              value: "true"
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: debug-jvm
+              containerPort: 8000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /c/portal/robots
+              port: http
+            initialDelaySeconds: 600
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /c/portal/robots
+              port: http
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1

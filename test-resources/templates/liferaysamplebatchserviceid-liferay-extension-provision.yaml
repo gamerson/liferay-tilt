@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: liferaysamplebatchserviceid-liferay.com-lxc-ext-provision-metadata
+  labels:
+    lxc.liferay.com/metadataType: ext-provision
+    dxp.lxc.liferay.com/virtualInstanceId: liferay.com
+    ext.lxc.liferay.com/projectUid: liferaysamplebatchprojectuid
+    ext.lxc.liferay.com/projectId: liferaysamplebatchprojectid
+    ext.lxc.liferay.com/serviceUid: liferaysamplebatchserviceuid
+    ext.lxc.liferay.com/serviceId: liferaysamplebatchserviceid
+  annotations:
+    ext.lxc.liferay.com/mainDomain: liferaysamplebatch.lfr.dev
+    ext.lxc.liferay.com/domains: |
+      liferaysamplebatch.lfr.dev
+data:
+  liferay-sample-batch.client-extension-config.json: |
+    {
+      "com.liferay.oauth2.provider.configuration.OAuth2ProviderApplicationHeadlessServerConfiguration~liferay-sample-batch-oauth-application-headless-server" : {
+        ".serviceAddress" : "localhost:8080",
+        ".serviceScheme" : "http",
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-batch",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "homePageURL" : "$[conf:.serviceScheme]://$[conf:.serviceAddress]",
+        "name" : "Liferay Sample OAuth Application Headless Server",
+        "projectId" : "liferaysamplebatch",
+        "projectName" : "liferay-sample-batch",
+        "properties" : [ ],
+        "scopes" : [
+          "Liferay.Headless.Admin.Workflow.everything",
+          "Liferay.Headless.Batch.Engine.everything",
+          "Liferay.Object.Admin.REST.everything"
+        ],
+        "sourceCodeURL" : "",
+        "type" : "oAuthApplicationHeadlessServer",
+        "typeSettings" : [
+          "scopes=Liferay.Headless.Admin.Workflow.everything\nLiferay.Headless.Batch.Engine.everything\nLiferay.Object.Admin.REST.everything"
+        ],
+        "webContextPath" : "/liferay-sample-batch"
+      }
+    }
