@@ -69,4 +69,5 @@ Edit `config.yaml` and set the value of `dxp.image`.
 
 ## Increase the number of Liferay replicas
 
-Edit `config.yaml` and set the value of `dxp.replicas`.
+First you need to place a cluster license in `dxp-docker-root/deploy`. Then
+edit `config.yaml` and set the value of `dxp.replicas` to a number higher than 1.
