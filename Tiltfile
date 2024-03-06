@@ -81,7 +81,7 @@ k8s_resource(
 	auto_init=False,
 	labels='test-resources',
 	objects=[
-		'liferaysamplebatchserviceid-liferay.com-lxc-ext-provision-metadata:configmap',
+		'liferaysamplebatch-liferay.com-lxc-ext-provision-metadata:configmap',
 		'liferaysampleiframe1-liferay.com-lxc-ext-provision-metadata:configmap',
 	],
 	new_name='test-resources',

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: liferaysamplebatchserviceid-liferay.com-lxc-ext-provision-metadata
+  name: liferaysamplebatch-liferay.com-lxc-ext-provision-metadata
   labels:
     lxc.liferay.com/metadataType: ext-provision
     dxp.lxc.liferay.com/virtualInstanceId: liferay.com
