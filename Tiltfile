@@ -83,6 +83,7 @@ k8s_resource(
 	objects=[
 		'liferaysamplebatch-liferay.com-lxc-ext-provision-metadata:configmap',
 		'liferaysampleiframe1-liferay.com-lxc-ext-provision-metadata:configmap',
+		'liferaysampleinstancesettings-liferay.com-lxc-ext-provision-metadata:configmap',
 	],
 	new_name='test-resources',
 	resource_deps=['dxp'],
