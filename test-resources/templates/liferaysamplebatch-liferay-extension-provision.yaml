@@ -29,16 +29,10 @@ data:
         "projectId" : "liferaysamplebatch",
         "projectName" : "liferay-sample-batch",
         "properties" : [ ],
-        "scopes" : [
-          "Liferay.Headless.Admin.Workflow.everything",
-          "Liferay.Headless.Batch.Engine.everything",
-          "Liferay.Object.Admin.REST.everything"
-        ],
+        "scopes" : [ "Liferay.Headless.Admin.Workflow.everything", "Liferay.Headless.Batch.Engine.everything", "Liferay.Object.Admin.REST.everything" ],
         "sourceCodeURL" : "",
         "type" : "oAuthApplicationHeadlessServer",
-        "typeSettings" : [
-          "scopes=Liferay.Headless.Admin.Workflow.everything\nLiferay.Headless.Batch.Engine.everything\nLiferay.Object.Admin.REST.everything"
-        ],
+        "typeSettings" : [ ".serviceScheme=http", "scopes=Liferay.Headless.Admin.Workflow.everything\nLiferay.Headless.Batch.Engine.everything\nLiferay.Object.Admin.REST.everything", ".serviceAddress=localhost:8080" ],
         "webContextPath" : "/liferay-sample-batch"
       }
     }
