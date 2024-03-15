@@ -13,3 +13,19 @@ spec:
       port: 80
       targetPort: 8080
       protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "fullname" . }}--cluster
+  labels:
+    {{- include "labels" . | nindent 4 }}
+spec:
+  clusterIP: None
+  selector:
+    {{- include "selectorLabels" . | nindent 4 }}
+  ports:
+    - name: "7800"
+      port: 7800
+      targetPort: 7800
+      protocol: TCP

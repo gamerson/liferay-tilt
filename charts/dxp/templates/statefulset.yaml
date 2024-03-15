@@ -40,12 +40,20 @@ spec:
                   key: token
             - name: LIFERAY_JPDA_ENABLED
               value: "true"
+              # cluster.link.bind.addr["cluster-link-control"]=localhost
+            - name: LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_BIND_PERIOD_ADDR_OPENBRACKET__QUOTE_CLUSTER_MINUS_LINK_MINUS_CONTROL_QUOTE__CLOSEBRACKET_
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
           ports:
             - name: http
               containerPort: 8080
               protocol: TCP
             - name: debug-jvm
               containerPort: 8000
+              protocol: TCP
+            - name: cluster
+              containerPort: 7800
               protocol: TCP
           livenessProbe:
             httpGet:
