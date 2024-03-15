@@ -57,8 +57,7 @@ helm_resource(
 	],
 	flags=[
 		'--set=image=liferay-tilt/dxp',
-		'--set=replicas=%s' % configFile.get(
-			'dxp').get('replicas'),
+		'--set=replicas=%s' % liferay_replicas,
 	],
 	image_deps=['liferay-tilt/dxp'],
 	image_keys=['image'],
