@@ -76,18 +76,6 @@ test_resources_yaml = helm(
 
 k8s_yaml(test_resources_yaml)
 
-k8s_resource(
-	auto_init=False,
-	labels='test-resources',
-	objects=[
-		'liferaysamplebatch-liferay.com-lxc-ext-provision-metadata:configmap',
-		'liferaysampleiframe1-liferay.com-lxc-ext-provision-metadata:configmap',
-		'liferaysampleinstancesettings-liferay.com-lxc-ext-provision-metadata:configmap',
-	],
-	new_name='test-resources',
-	resource_deps=['dxp'],
-)
-
 # ----- Nuke Data -----
 
 local_resource(

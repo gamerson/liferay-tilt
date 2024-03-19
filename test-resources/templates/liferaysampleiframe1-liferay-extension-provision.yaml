@@ -1,3 +1,4 @@
+{{- if .Values.liferaysampleiframe1.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -32,3 +33,4 @@ data:
         "webContextPath" : "/liferay-sample-iframe-1"
       }
     }
+{{- end -}}

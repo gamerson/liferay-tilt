@@ -1,3 +1,4 @@
+{{- if .Values.liferaysampleinstancesettings.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -34,3 +35,4 @@ data:
         "webContextPath" : "/liferay-sample-instance-settings"
       }
     }
+{{- end -}}
