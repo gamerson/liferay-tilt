@@ -42,10 +42,10 @@ docker_build(
 FROM %s
 
 COPY --chown=liferay:liferay deploy /opt/liferay/deploy
-COPY portal-ext.properties /opt/liferay/portal-ext.properties
-COPY osgi/configs /opt/liferay/osgi/configs
-COPY osgi/log4j /opt/liferay/osgi/log4j
-COPY unicast.xml /opt/liferay/unicast.xml
+COPY --chown=liferay:liferay osgi /opt/liferay/osgi
+COPY --chown=liferay:liferay portal-ext.properties /opt/liferay/portal-ext.properties
+COPY --chown=liferay:liferay shielded-container-lib /opt/liferay/tomcat/webapps/ROOT/WEB-INF/shielded-container-lib
+COPY --chown=liferay:liferay unicast.xml /opt/liferay/unicast.xml
 ''' % (configFile.get('dxp').get('image')),
 )
 
