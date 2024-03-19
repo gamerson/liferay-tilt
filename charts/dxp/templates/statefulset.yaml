@@ -15,6 +15,14 @@ spec:
       labels: *labels
     spec:
       serviceAccountName: *fullname
+      initContainers:
+        - name: pre-populate-dxp-data
+          image: {{ .Values.image }}
+          command: ["/bin/sh","-c"]
+          args: ["[ ! -e /dxp-document_library/README.txt ] && cp -rv /opt/liferay/data/document_library/* /dxp-document_library; exit 0"]
+          volumeMounts:
+          - mountPath: /dxp-document_library
+            name: dxp-data-pvc
       containers:
         - name: liferay
           image: {{ .Values.image }}
@@ -72,3 +80,10 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 3
             successThreshold: 1
+          volumeMounts:
+            - mountPath: /opt/liferay/data/document_library
+              name: dxp-data-pvc
+      volumes:
+        - name: dxp-data-pvc
+          persistentVolumeClaim:
+            claimName: dxp-data-pvc
