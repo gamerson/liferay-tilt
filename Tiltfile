@@ -26,6 +26,7 @@ helm_resource(
 		'--set=auth.database=lportal',
 		'--set=auth.username=lportal',
 		'--set=auth.password=lportal',
+		'--set=auth.defaultAuthenticationPlugin=caching_sha2_password',
 		'--set=primary.persistentVolumeClaimRetentionPolicy.enabled=true',
 		'--set=primary.persistentVolumeClaimRetentionPolicy.whenScaled=Delete',
 		'--set=primary.persistentVolumeClaimRetentionPolicy.whenDeleted=Delete',
