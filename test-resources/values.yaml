@@ -6,3 +6,5 @@ liferaysampleinstancesettings:
   enabled: false
 liferaysampleetcspringboot:
   enabled: false
+liferaysamplecommercepaymentintegration:
+  enabled: false
