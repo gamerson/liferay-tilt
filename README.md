@@ -8,6 +8,10 @@ Install these tools first:
 Run this to create k3d cluster (with local docker registry):
 
 ```shell
+k3d cluster create liferay-tilt --registry-create registry:0.0.0.0:5000
+
+# OR
+
 k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create registry:0.0.0.0:5000
 ```
 
