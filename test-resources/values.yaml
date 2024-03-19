@@ -8,3 +8,5 @@ liferaysampleetcspringboot:
   enabled: false
 liferaysamplecommercepaymentintegration:
   enabled: false
+liferaysamplecommerceshippingengine:
+  enabled: false
