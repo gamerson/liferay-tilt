@@ -1,17 +1,18 @@
 # Run Liferay Portal in Kubernetes via Tilt
 
+System Requirements:
+* 32 GB RAM minimum
+* 8 (logical) CPUs minimum
+
 Install these tools first:
-* docker
-* k3d (simplest via `brew`)
-* tilt (simplest via `brew`)
+* docker (use whichever platform compatible implementation is most suitable to you)
+* kubectl (simplest via `brew install kubectl`)
+* k3d (simplest via `brew install k3d`)
+* tilt (simplest via `brew install tilt`)
 
 Run this to create k3d cluster (with local docker registry):
 
 ```shell
-k3d cluster create liferay-tilt --registry-create registry:0.0.0.0:5000
-
-# OR
-
 k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create registry:0.0.0.0:5000
 ```
 
