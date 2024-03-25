@@ -70,12 +70,18 @@ helm_resource(
 
 # ----- Test Resources -----
 
-test_resources_yaml = helm(
-	'test-resources',
+helm_resource(
+	auto_init=False,
 	name='test-resources',
+	chart='./test-resources',
+	deps=[
+		'./test-resources',
+	],
+	resource_deps=[
+		'dxp',
+	],
+	labels='test-resources',
 )
-
-k8s_yaml(test_resources_yaml)
 
 # ----- Nuke Data -----
 
