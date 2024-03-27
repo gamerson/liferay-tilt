@@ -1,0 +1,14 @@
+auth:
+  defaultAuthenticationPlugin: caching_sha2_password
+  rootPassword: lportal
+initdbScripts:
+  my_init_script.sh: |
+    #!/bin/sh
+    mysql -P 3306 -uroot -plportal -e "\
+      create database lportal character set utf8;\
+      create user 'lportal'@'%' identified by 'lportal';\
+      grant all privileges on *.* to 'lportal'@'%';"
+primary:
+  persistentVolumeClaimRetentionPolicy:
+    enabled: true
+    whenDeleted: Delete

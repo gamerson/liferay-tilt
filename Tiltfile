@@ -23,13 +23,8 @@ helm_resource(
 	name='mysql',
 	chart='oci://registry-1.docker.io/bitnamicharts/mysql',
 	flags=[
-		'--set=auth.database=lportal',
-		'--set=auth.username=lportal',
-		'--set=auth.password=lportal',
-		'--set=auth.defaultAuthenticationPlugin=caching_sha2_password',
-		'--set=primary.persistentVolumeClaimRetentionPolicy.enabled=true',
-		'--set=primary.persistentVolumeClaimRetentionPolicy.whenScaled=Delete',
-		'--set=primary.persistentVolumeClaimRetentionPolicy.whenDeleted=Delete',
+		'-f',
+		'%s/charts/mysql/values.yaml' % os.getcwd(),
 	],
 	labels='mysql',
 )
