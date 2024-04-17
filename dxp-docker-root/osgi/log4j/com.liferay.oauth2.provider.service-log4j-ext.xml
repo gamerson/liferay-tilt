@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <Configuration strict="true">
 	<Loggers>
+		<Logger level="DEBUG" name="com.liferay.oauth2.provider.internal.configuration" />
+		<Logger level="DEBUG" name="com.liferay.oauth2.provider.internal.security.permission.resource" />
+		<Logger level="DEBUG" name="com.liferay.oauth2.provider.model.impl" />
 		<Logger level="DEBUG" name="com.liferay.oauth2.provider.service" />
 	</Loggers>
 </Configuration>
