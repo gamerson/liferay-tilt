@@ -42,15 +42,9 @@ k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create regi
 
   http://localhost:10350/r/(all)/overview
 
-* When `tilt` is "up" you'll likely want to access DXP. To do so, run the following command:
+* When `tilt` is "up" you'll likely want to access DXP.
 
-  ```
-  kubectl port-forward dxp-0 8080:8080 8000:8000 11310:11311
-  ```
-
-  > __Note:__ This port-forward targets the first "replica" of DXP. If you have specified more than one replica and want to interact with them directly you can specify a different suffix to the port-forward argument `dxp-0` (replicas are integer indexed from `0`) and specifying a different port for each forward (e.g. `... dxp-1 8081:8080 8001:8000 11311:11311` and so on).
-
-  Then you can access the default virtual instance at the address:
+  You can access the default virtual instance at the address:
 
   http://vi1.localtest.me:8080
 
@@ -78,7 +72,17 @@ k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create regi
 
 ## Debug a specific Liferay pod
 
-To connect a remote debugger to replica `dxp-0` use the address: `localhost:8000`
+To open ports directly to a specific Liferay pod, run the following command:
+
+```
+kubectl port-forward dxp-0 9080:8080 8000:8000 11310:11311
+```
+
+> __Note:__ Port 8080 is already mapped by the load balancer / ingress which points to the `dxp` service backends. So use a different port to directly access the pod port 8080. In the example above we used `9080`.
+
+> __Note:__ This port-forward targets the first "pod" or "replica" of DXP. If you have configured more than one replica and want to interact with them directly you can specify a different suffix to the port-forward argument `dxp-0` (replicas are integer indexed from `0`) and specifying a different port for each forward (e.g. `... dxp-1 8081:8080 8001:8000 11311:11311` and so on).
+
+Now, to connect a remote debugger to replica `dxp-0` use the address: `localhost:8000`.
 
 ## Telnet to the gogo shell of a a specific Liferay pod
 
