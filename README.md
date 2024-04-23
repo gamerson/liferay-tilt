@@ -10,7 +10,15 @@ Install these tools first:
 * k3d (simplest via `brew install k3d`)
 * tilt (simplest via `brew install tilt`)
 
-Run this to create k3d cluster (with local docker registry):
+Edit your system's host file so the following domains resolve to your `localhost` address:
+
+```
+120.0.0.1 vi.one.private
+120.0.0.1 vi.two.private
+120.0.0.1 vi.three.private
+```
+
+Run this to create a k3d cluster (with local docker registry):
 
 ```shell
 k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create registry:0.0.0.0:5000
@@ -32,17 +40,35 @@ k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create regi
 
 * To bring everything down
 
+  > __Note__: This deletes everything including the database volume.
+
   ```shell
   tilt down
   ```
 
 * When `tilt` is "up" access the Tilt UI at
 
-    http://localhost:10350/r/(all)/overview
+  http://localhost:10350/r/(all)/overview
 
-* When `tilt` is "up" access DXP at
+* When `tilt` is "up" you'll likely want to access DXP. To do so, run the following command:
 
-    http://localhost:8080
+  ```
+  kubectl port-forward dxp-0 8080:8080 8000:8000 11310:11311
+  ```
+
+  > __Note:__ This port-forward targets the first "replica" of DXP. If you have specified more than one replica and want to interact with them directly you can specify a different suffix to the port-forward argument `dxp-0` (replicas are integer indexed from `0`) and specifying a different port for each forward (e.g. `... dxp-1 8081:8080 8001:8000 11311:11311` and so on).
+
+  Then you can access the default virtual instance at the address:
+
+  http://vi.one.private:8080
+
+  You can access the other virtual instances at:
+
+  http://vi.two.private:8080
+
+  and
+
+  http://vi.three.private:8080
 
 * Stop the k3d cluster when you're done to recover the resources. (K3d will keep running in the background even after system restarts if you let it.)
 
@@ -60,13 +86,11 @@ k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create regi
 
 ## Debug a specific Liferay pod
 
-Manually port forward the debug port of a pod to a local port:
+To connect a remote debugger to replica `dxp-0` use the address: `localhost:8000`
 
-```shell
-kubectl port-forward dxp-1 8001:8000
-```
+## Telnet to the gogo shell of a a specific Liferay pod
 
-.. then connect a remote debugger to `localhost:8001`
+Telnet to `dxp-0` using the command: `telnet localhost 11310`
 
 ## Use a different (even custom) Liferay image
 
