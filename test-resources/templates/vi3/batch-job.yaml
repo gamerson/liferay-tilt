@@ -2,12 +2,23 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: vi3.{{ .Values.domainBase }}-batch
+  labels:
+    projectUid: liferaysamplebatch-projectuid-vi3
+    projectId: liferaysamplebatch-projectid-vi3
+    serviceUid: liferaysamplebatch-serviceuid-vi3
+    serviceId: liferaysamplebatch-serviceid-vi3
+  name: liferaysamplebatch-vi3
 spec:
   backoffLimit: 3
   parallelism: 1
   template:
     spec:
+      metadata:
+        labels:
+          projectUid: liferaysamplebatch-projectuid-vi3
+          projectId: liferaysamplebatch-projectid-vi3
+          serviceUid: liferaysamplebatch-serviceuid-vi3
+          serviceId: liferaysamplebatch-serviceid-vi3
       hostAliases:
       - ip: "10.43.51.23"
         hostnames:
@@ -46,6 +57,6 @@ spec:
         name: lxc-dxp-metadata
       - configMap:
           defaultMode: 420
-          name: liferaysamplebatchserviceid-vi3.{{ .Values.domainBase }}-lxc-ext-init-metadata
+          name: liferaysamplebatch-serviceid-vi3-vi3.{{ .Values.domainBase }}-lxc-ext-init-metadata
         name: lxc-ext-init-metadata
 {{- end -}}

@@ -40,9 +40,9 @@ vi2:
 vi3:
   batch:
     config:
-      enabled: true
+      enabled: false
     workload:
-      enabled: true
+      enabled: false
   iframe1:
     config:
       enabled: false
