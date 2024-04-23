@@ -1,8 +1,8 @@
-{{- if .Values.v3_liferaycloud_dev.batch.enabled -}}
+{{- if .Values.v3_liferaycloud_dev.batch.workload.enabled -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: vi-three-private-batch
+  name: v3-liferaycloud-dev-batch
 spec:
   backoffLimit: 3
   parallelism: 1

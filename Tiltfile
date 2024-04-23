@@ -78,21 +78,6 @@ helm_resource(
 	labels='test-resources',
 )
 
-# ----- CX Resources -----
-
-helm_resource(
-	auto_init=False,
-	name='cx-resources',
-	chart='./charts/cx',
-	deps=[
-		'./charts/cx',
-	],
-	resource_deps=[
-		'dxp',
-	],
-	labels='cx-resources',
-)
-
 # ----- Nuke Data -----
 
 local_resource(

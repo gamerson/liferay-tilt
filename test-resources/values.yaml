@@ -40,6 +40,8 @@ v3_liferaycloud_dev:
   batch:
     config:
       enabled: true
+    workload:
+      enabled: true
   iframe1:
     config:
       enabled: false
