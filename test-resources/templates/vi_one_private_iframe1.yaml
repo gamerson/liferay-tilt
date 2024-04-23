@@ -1,4 +1,4 @@
-{{- if .Values.liferaysampleiframe1.enabled -}}
+{{- if .Values.vi_one_private.iframe1.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:

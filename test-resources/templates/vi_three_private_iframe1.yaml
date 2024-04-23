@@ -1,0 +1,35 @@
+{{- if .Values.vi_three_private.iframe1.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    ext.lxc.liferay.com/mainDomain: liferaysampleiframe1.lfr.dev
+    ext.lxc.liferay.com/domains: liferaysampleiframe1.lfr.dev
+  labels:
+    lxc.liferay.com/metadataType: ext-provision
+    dxp.lxc.liferay.com/virtualInstanceId: vi.three.private
+    ext.lxc.liferay.com/projectUid: liferaysampleiframe1projectuid
+    ext.lxc.liferay.com/projectId: liferaysampleiframe1projectid
+    ext.lxc.liferay.com/serviceUid: liferaysampleiframe1serviceuid
+    ext.lxc.liferay.com/serviceId: liferaysampleiframe1serviceid
+  name: liferaysampleiframe1-vi.three.private-lxc-ext-provision-metadata
+data:
+  liferay-sample-iframe-1.client-extension-config.json: |
+    {
+      "com.liferay.client.extension.type.configuration.CETConfiguration~liferay-sample-iframe-1-counter-app" : {
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-iframe-1",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "name" : "Counter App",
+        "projectId" : "liferaysampleiframe1",
+        "projectName" : "liferay-sample-iframe-1",
+        "properties" : [ ],
+        "sourceCodeURL" : "",
+        "type" : "iframe",
+        "typeSettings" : [ "portletCategoryName=category.client-extensions", "url=https://arnab-datta.github.io/counter-app" ],
+        "webContextPath" : "/liferay-sample-iframe-1"
+      }
+    }
+{{- end -}}

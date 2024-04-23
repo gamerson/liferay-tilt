@@ -1,0 +1,64 @@
+{{- if .Values.vi_one_private.commercepaymentintegration.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    ext.lxc.liferay.com/domains: liferaysamplecommercepaymentintegration.lfr.dev
+    ext.lxc.liferay.com/mainDomain: liferaysamplecommercepaymentintegration.lfr.dev
+  labels:
+    lxc.liferay.com/metadataType: ext-provision
+    dxp.lxc.liferay.com/virtualInstanceId: vi.one.private
+    ext.lxc.liferay.com/projectUid: yolgksvunebrmpihkr
+    ext.lxc.liferay.com/projectId: exts8h5troubleshoot-extprd
+    ext.lxc.liferay.com/serviceUid: gdfkxzhehsksyuxecn
+    ext.lxc.liferay.com/serviceId: liferaysamplecommercepaymentintegration
+  name: liferaysamplecommercepaymentintegration-vi.one.private-lxc-ext-provision-metadata
+data:
+  liferay-sample-commerce-payment-integration.client-extension-config.json: |-
+    {
+      "com.liferay.commerce.payment.internal.configuration.FunctionCommercePaymentIntegrationConfiguration~liferay-sample-commerce-payment-integration" : {
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-commerce-payment-integration",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "key" : "liferay-sample-commerce-payment-integration",
+        "name" : "Liferay Sample Commerce Payment Integration",
+        "oAuth2ApplicationExternalReferenceCode" : "liferay-sample-commerce-payment-integration-oauth-application-user-agent",
+        "paymentIntegrationType" : 3,
+        "paymentIntegrationTypeSettings" : {
+          "key1" : "value1",
+          "key2" : "value2",
+          "key3" : "value3",
+          "key4" : "value4",
+          "key5" : "value5"
+        },
+        "projectId" : "liferaysamplecommercepaymentintegration",
+        "projectName" : "liferay-sample-commerce-payment-integration",
+        "properties" : [ ],
+        "sourceCodeURL" : "",
+        "type" : "commercePaymentIntegration",
+        "typeSettings" : [ "paymentIntegrationTypeSettings={key1=value1, key2=value2, key3=value3, key4=value4, key5=value5}", "oAuth2ApplicationExternalReferenceCode=liferay-sample-commerce-payment-integration-oauth-application-user-agent", "paymentIntegrationType=3", "key=liferay-sample-commerce-payment-integration" ],
+        "webContextPath" : "/liferay-sample-commerce-payment-integration"
+      },
+      "com.liferay.oauth2.provider.configuration.OAuth2ProviderApplicationUserAgentConfiguration~liferay-sample-commerce-payment-integration-oauth-application-user-agent" : {
+        ".serviceAddress" : "localhost:58081",
+        ".serviceScheme" : "http",
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-commerce-payment-integration",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "homePageURL" : "$[conf:.serviceScheme]://$[conf:.serviceAddress]",
+        "name" : "Liferay Sample Commerce Payment Integration OAuth Application User Agent",
+        "projectId" : "liferaysamplecommercepaymentintegration",
+        "projectName" : "liferay-sample-commerce-payment-integration",
+        "properties" : [ ],
+        "scopes" : [ "Liferay.Headless.Admin.Workflow.everything" ],
+        "sourceCodeURL" : "",
+        "type" : "oAuthApplicationUserAgent",
+        "typeSettings" : [ ".serviceScheme=http", "scopes=Liferay.Headless.Admin.Workflow.everything", ".serviceAddress=localhost:58081" ],
+        "webContextPath" : "/liferay-sample-commerce-payment-integration"
+      }
+    }
+{{- end -}}

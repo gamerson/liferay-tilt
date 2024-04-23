@@ -1,0 +1,37 @@
+{{- if .Values.vi_two_private.instancesettings.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    ext.lxc.liferay.com/mainDomain: liferaysampleinstancesettings.lfr.dev
+    ext.lxc.liferay.com/domains: liferaysampleinstancesettings.lfr.dev
+  labels:
+    lxc.liferay.com/metadataType: ext-provision
+    dxp.lxc.liferay.com/virtualInstanceId: vi.two.private
+    ext.lxc.liferay.com/projectUid: liferaysampleinstancesettingsprojectuid
+    ext.lxc.liferay.com/projectId: liferaysampleinstancesettingsprojectid
+    ext.lxc.liferay.com/serviceUid: liferaysampleinstancesettingsserviceuid
+    ext.lxc.liferay.com/serviceId: liferaysampleinstancesettingsserviceid
+  name: liferaysampleinstancesettings-vi.two.private-lxc-ext-provision-metadata
+data:
+  liferay-sample-instance-settings-d2q5j1.client-extension-config.json: |
+    {
+      "com.liferay.portal.security.content.security.policy.internal.configuration.ContentSecurityPolicyConfiguration.scoped~liferay-sample-instance-settings-d2q5j1" : {
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-instance-settings",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "enabled" : true,
+        "name" : "Liferay Sample Instance Settings D2Q5J1",
+        "policy" : "frame-src http://other.foo;",
+        "projectId" : "liferaysampleinstancesettings",
+        "projectName" : "liferay-sample-instance-settings",
+        "properties" : [ ],
+        "sourceCodeURL" : "",
+        "type" : "instanceSettings",
+        "typeSettings" : [ "enabled=true", "policy=frame-src http://other.foo;" ],
+        "webContextPath" : "/liferay-sample-instance-settings"
+      }
+    }
+{{- end -}}

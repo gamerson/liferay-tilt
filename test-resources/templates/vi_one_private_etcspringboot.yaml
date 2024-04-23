@@ -1,0 +1,142 @@
+{{- if .Values.vi_one_private.etcspringboot.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    ext.lxc.liferay.com/mainDomain: liferaysampleetcspringboot.lfr.dev
+    ext.lxc.liferay.com/domains: liferaysampleetcspringboot.lfr.dev
+  labels:
+    lxc.liferay.com/metadataType: ext-provision
+    dxp.lxc.liferay.com/virtualInstanceId: vi.one.private
+    ext.lxc.liferay.com/projectUid: yolgksvunebrmpihkr
+    ext.lxc.liferay.com/projectId: exts8h5troubleshoot-extprd
+    ext.lxc.liferay.com/serviceUid: wjbwlbihembtwsqqke
+    ext.lxc.liferay.com/serviceId: liferaysampleetcspringboot
+  name: liferaysampleetcspringboot-vi.one.private-lxc-ext-provision-metadata
+data:
+  liferay-sample-etc-spring-boot.client-extension-config.json: |-
+    {
+      "com.liferay.notification.internal.configuration.FunctionNotificationTypeConfiguration~liferay-sample-etc-spring-boot-notification-type-1" : {
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-etc-spring-boot",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "name" : "Liferay Sample Etc Spring Boot Notification Type 1",
+        "oAuth2ApplicationExternalReferenceCode" : "liferay-sample-etc-spring-boot-oauth-application-user-agent",
+        "projectId" : "liferaysampleetcspringboot",
+        "projectName" : "liferay-sample-etc-spring-boot",
+        "properties" : [ ],
+        "resourcePath" : "/notification/type/1",
+        "sourceCodeURL" : "",
+        "type" : "notificationType",
+        "typeSettings" : [ "oAuth2ApplicationExternalReferenceCode=liferay-sample-etc-spring-boot-oauth-application-user-agent", "resourcePath=/notification/type/1" ],
+        "webContextPath" : "/liferay-sample-etc-spring-boot"
+      },
+      "com.liferay.oauth2.provider.configuration.OAuth2ProviderApplicationUserAgentConfiguration~liferay-sample-etc-spring-boot-oauth-application-user-agent" : {
+        ".serviceAddress" : "localhost:58081",
+        ".serviceScheme" : "http",
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-etc-spring-boot",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "homePageURL" : "$[conf:.serviceScheme]://$[conf:.serviceAddress]",
+        "name" : "Liferay Sample Etc Spring Boot OAuth Application User Agent",
+        "projectId" : "liferaysampleetcspringboot",
+        "projectName" : "liferay-sample-etc-spring-boot",
+        "properties" : [ ],
+        "scopes" : [ "Liferay.Headless.Admin.Workflow.everything" ],
+        "sourceCodeURL" : "",
+        "type" : "oAuthApplicationUserAgent",
+        "typeSettings" : [ ".serviceScheme=http", "scopes=Liferay.Headless.Admin.Workflow.everything", ".serviceAddress=localhost:58081" ],
+        "webContextPath" : "/liferay-sample-etc-spring-boot"
+      },
+      "com.liferay.object.internal.configuration.FunctionObjectActionExecutorImplConfiguration~liferay-sample-etc-spring-boot-object-action-1" : {
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-etc-spring-boot",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "name" : "Liferay Sample Etc Spring Boot Object Action 1",
+        "oAuth2ApplicationExternalReferenceCode" : "liferay-sample-etc-spring-boot-oauth-application-user-agent",
+        "projectId" : "liferaysampleetcspringboot",
+        "projectName" : "liferay-sample-etc-spring-boot",
+        "properties" : [ ],
+        "resourcePath" : "/object/action/1",
+        "sourceCodeURL" : "",
+        "type" : "objectAction",
+        "typeSettings" : [ "oAuth2ApplicationExternalReferenceCode=liferay-sample-etc-spring-boot-oauth-application-user-agent", "resourcePath=/object/action/1" ],
+        "webContextPath" : "/liferay-sample-etc-spring-boot"
+      },
+      "com.liferay.object.internal.configuration.FunctionObjectActionExecutorImplConfiguration~liferay-sample-etc-spring-boot-object-action-2" : {
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-etc-spring-boot",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "name" : "Liferay Sample Etc Spring Boot Object Action 2",
+        "oAuth2ApplicationExternalReferenceCode" : "liferay-sample-etc-spring-boot-oauth-application-user-agent",
+        "projectId" : "liferaysampleetcspringboot",
+        "projectName" : "liferay-sample-etc-spring-boot",
+        "properties" : [ ],
+        "resourcePath" : "/object/action/2",
+        "sourceCodeURL" : "",
+        "type" : "objectAction",
+        "typeSettings" : [ "oAuth2ApplicationExternalReferenceCode=liferay-sample-etc-spring-boot-oauth-application-user-agent", "resourcePath=/object/action/2" ],
+        "webContextPath" : "/liferay-sample-etc-spring-boot"
+      },
+      "com.liferay.object.internal.configuration.FunctionObjectValidationRuleEngineImplConfiguration~liferay-sample-etc-spring-boot-object-validation-rule-1" : {
+        ":configurator:policy" : "force",
+        "allowedObjectDefinitionNames" : [ "C_Employee" ],
+        "baseURL" : "${portalURL}/o/liferay-sample-etc-spring-boot",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "name" : "Liferay Sample Etc Spring Boot Spring Boot Object Validation Rule 1",
+        "oAuth2ApplicationExternalReferenceCode" : "liferay-sample-etc-spring-boot-oauth-application-user-agent",
+        "projectId" : "liferaysampleetcspringboot",
+        "projectName" : "liferay-sample-etc-spring-boot",
+        "properties" : [ ],
+        "resourcePath" : "/object/validation/rule/1",
+        "sourceCodeURL" : "",
+        "type" : "objectValidationRule",
+        "typeSettings" : [ "oAuth2ApplicationExternalReferenceCode=liferay-sample-etc-spring-boot-oauth-application-user-agent", "allowedObjectDefinitionNames=C_Employee", "resourcePath=/object/validation/rule/1" ],
+        "webContextPath" : "/liferay-sample-etc-spring-boot"
+      },
+      "com.liferay.object.rest.internal.configuration.FunctionObjectEntryManagerConfiguration~liferay-sample-etc-spring-boot-object-entry-manager-1" : {
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-etc-spring-boot",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "name" : "Liferay Sample Etc Spring Boot Object Entry Manager 1",
+        "oAuth2ApplicationExternalReferenceCode" : "liferay-sample-etc-spring-boot-oauth-application-user-agent",
+        "projectId" : "liferaysampleetcspringboot",
+        "projectName" : "liferay-sample-etc-spring-boot",
+        "properties" : [ ],
+        "resourcePath" : "/object/entry/manager/1",
+        "sourceCodeURL" : "",
+        "type" : "objectEntryManager",
+        "typeSettings" : [ "oAuth2ApplicationExternalReferenceCode=liferay-sample-etc-spring-boot-oauth-application-user-agent", "resourcePath=/object/entry/manager/1" ],
+        "webContextPath" : "/liferay-sample-etc-spring-boot"
+      },
+      "com.liferay.portal.workflow.kaleo.runtime.internal.configuration.FunctionActionExecutorImplConfiguration~liferay-sample-etc-spring-boot-workflow-action-1" : {
+        ":configurator:policy" : "force",
+        "baseURL" : "${portalURL}/o/liferay-sample-etc-spring-boot",
+        "buildTimestamp" : {{ now.Unix }},
+        "description" : "",
+        "dxp.lxc.liferay.com.virtualInstanceId" : "default",
+        "name" : "Liferay Sample Etc Spring Boot Workflow Action 1",
+        "oAuth2ApplicationExternalReferenceCode" : "liferay-sample-etc-spring-boot-oauth-application-user-agent",
+        "projectId" : "liferaysampleetcspringboot",
+        "projectName" : "liferay-sample-etc-spring-boot",
+        "properties" : [ ],
+        "resourcePath" : "/workflow/action/1",
+        "sourceCodeURL" : "",
+        "type" : "workflowAction",
+        "typeSettings" : [ "oAuth2ApplicationExternalReferenceCode=liferay-sample-etc-spring-boot-oauth-application-user-agent", "resourcePath=/workflow/action/1" ],
+        "webContextPath" : "/liferay-sample-etc-spring-boot"
+      }
+    }
+{{- end -}}

@@ -1,12 +1,39 @@
-liferaysamplebatch:
-  enabled: false
-liferaysampleiframe1:
-  enabled: false
-liferaysampleinstancesettings:
-  enabled: false
-liferaysampleetcspringboot:
-  enabled: false
-liferaysamplecommercepaymentintegration:
-  enabled: false
-liferaysamplecommerceshippingengine:
-  enabled: false
+vi_one_private:
+  batch:
+    enabled: false
+  iframe1:
+    enabled: false
+  instancesettings:
+    enabled: false
+  etcspringboot:
+    enabled: false
+  commercepaymentintegration:
+    enabled: false
+  commerceshippingengine:
+    enabled: false
+vi_two_private:
+  batch:
+    enabled: false
+  iframe1:
+    enabled: false
+  instancesettings:
+    enabled: false
+  etcspringboot:
+    enabled: false
+  commercepaymentintegration:
+    enabled: false
+  commerceshippingengine:
+    enabled: false
+vi_three_private:
+  batch:
+    enabled: true
+  iframe1:
+    enabled: false
+  instancesettings:
+    enabled: false
+  etcspringboot:
+    enabled: true
+  commercepaymentintegration:
+    enabled: false
+  commerceshippingengine:
+    enabled: false
