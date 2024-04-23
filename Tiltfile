@@ -67,7 +67,6 @@ helm_resource(
 # ----- Test Resources -----
 
 helm_resource(
-	auto_init=False,
 	name='test-resources',
 	chart='./test-resources',
 	deps=[
