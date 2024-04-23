@@ -1,0 +1,105 @@
+{{- if .Values.vi3.etcspringboot.workload.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    projectUid: liferaysampleetcspringboot-projectuid-vi3
+    projectId: liferaysampleetcspringboot-projectid-vi3
+    serviceUid: liferaysampleetcspringboot-serviceuid-vi3
+    serviceId: liferaysampleetcspringboot-serviceid-vi3
+  name: liferaysampleetcspringboot-vi3
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      projectUid: liferaysampleetcspringboot-projectuid-vi3
+      projectId: liferaysampleetcspringboot-projectid-vi3
+      serviceUid: liferaysampleetcspringboot-serviceuid-vi3
+      serviceId: liferaysampleetcspringboot-serviceid-vi3
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        projectUid: liferaysampleetcspringboot-projectuid-vi3
+        projectId: liferaysampleetcspringboot-projectid-vi3
+        serviceUid: liferaysampleetcspringboot-serviceuid-vi3
+        serviceId: liferaysampleetcspringboot-serviceid-vi3
+    spec:
+      automountServiceAccountToken: false
+      hostAliases:
+      - ip: "10.43.51.23"
+        hostnames:
+        - "vi3.{{ .Values.domainBase }}"
+      containers:
+      - env:
+        - name: LIFERAY_ROUTES_CLIENT_EXTENSION
+          value: /etc/liferay/lxc/ext-init-metadata
+        - name: LIFERAY_ROUTES_DXP
+          value: /etc/liferay/lxc/dxp-metadata
+        image: registry:5000/liferay-sample-etc-spring-boot:20240423170343931
+        imagePullPolicy: IfNotPresent
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sleep
+              - "15"
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ready
+            port: 58081
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: liferaysampleetcspringboot
+        ports:
+        - containerPort: 58081
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ready
+            port: 58081
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 384Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/liferay/lxc/dxp-metadata
+          name: lxc-dxp-metadata
+          readOnly: true
+        - mountPath: /etc/liferay/lxc/ext-init-metadata
+          name: lxc-ext-init-metadata
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      serviceAccount: default
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 300
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: vi3.{{ .Values.domainBase }}-lxc-dxp-metadata
+        name: lxc-dxp-metadata
+      - configMap:
+          defaultMode: 420
+          name: liferaysampleetcspringboot-serviceid-vi3-vi3.{{ .Values.domainBase }}-lxc-ext-init-metadata
+        name: lxc-ext-init-metadata
+{{- end -}}

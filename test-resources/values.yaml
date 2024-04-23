@@ -51,7 +51,9 @@ vi3:
       enabled: false
   etcspringboot:
     config:
-      enabled: true
+      enabled: false
+    workload:
+      enabled: false
   commercepaymentintegration:
     config:
       enabled: false
