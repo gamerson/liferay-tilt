@@ -8,10 +8,10 @@ metadata:
   labels:
     lxc.liferay.com/metadataType: ext-provision
     dxp.lxc.liferay.com/virtualInstanceId: vi1.{{ .Values.domainBase }}
-    ext.lxc.liferay.com/projectUid: liferaysampleinstancesettingsprojectuid
-    ext.lxc.liferay.com/projectId: liferaysampleinstancesettingsprojectid
-    ext.lxc.liferay.com/serviceUid: liferaysampleinstancesettingsserviceuid
-    ext.lxc.liferay.com/serviceId: liferaysampleinstancesettingsserviceid
+    ext.lxc.liferay.com/projectUid: liferaysampleinstancesettings-projectuid-vi1
+    ext.lxc.liferay.com/projectId: liferaysampleinstancesettings-projectid-vi1
+    ext.lxc.liferay.com/serviceUid: liferaysampleinstancesettings-serviceuid-vi1
+    ext.lxc.liferay.com/serviceId: liferaysampleinstancesettings-serviceid-vi1
   name: liferaysampleinstancesettings-vi1.{{ .Values.domainBase }}-lxc-ext-provision-metadata
 data:
   liferay-sample-instance-settings-d2q5j1.client-extension-config.json: |

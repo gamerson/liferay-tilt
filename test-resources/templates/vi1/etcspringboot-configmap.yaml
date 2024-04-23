@@ -8,10 +8,10 @@ metadata:
   labels:
     lxc.liferay.com/metadataType: ext-provision
     dxp.lxc.liferay.com/virtualInstanceId: vi1.{{ .Values.domainBase }}
-    ext.lxc.liferay.com/projectUid: yolgksvunebrmpihkr
-    ext.lxc.liferay.com/projectId: exts8h5troubleshoot-extprd
-    ext.lxc.liferay.com/serviceUid: wjbwlbihembtwsqqke
-    ext.lxc.liferay.com/serviceId: liferaysampleetcspringboot
+    ext.lxc.liferay.com/projectUid: liferaysampleetcspringboot-projectuid-vi1
+    ext.lxc.liferay.com/projectId: liferaysampleetcspringboot-projectid-vi1
+    ext.lxc.liferay.com/serviceUid: liferaysampleetcspringboot-serviceuid-vi1
+    ext.lxc.liferay.com/serviceId: liferaysampleetcspringboot-serviceid-vi1
   name: liferaysampleetcspringboot-vi1.{{ .Values.domainBase }}-lxc-ext-provision-metadata
 data:
   liferay-sample-etc-spring-boot.client-extension-config.json: |-

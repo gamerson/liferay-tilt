@@ -8,10 +8,10 @@ metadata:
   labels:
     lxc.liferay.com/metadataType: ext-provision
     dxp.lxc.liferay.com/virtualInstanceId: vi1.{{ .Values.domainBase }}
-    ext.lxc.liferay.com/projectUid: yolgksvunebrmpihkr
-    ext.lxc.liferay.com/projectId: exts8h5troubleshoot-extprd
-    ext.lxc.liferay.com/serviceUid: idlcjehanvlzjuqhvi
-    ext.lxc.liferay.com/serviceId: liferaysamplecommerceshippingengine
+    ext.lxc.liferay.com/projectUid: liferaysamplecommerceshippingengine-projectuid-vi1
+    ext.lxc.liferay.com/projectId: liferaysamplecommerceshippingengine-projectid-vi1
+    ext.lxc.liferay.com/serviceUid: liferaysamplecommerceshippingengine-serviceuid-vi1
+    ext.lxc.liferay.com/serviceId: liferaysamplecommerceshippingengine-serviceid-vi1
   name: liferaysamplecommerceshippingengine-vi1.{{ .Values.domainBase }}-lxc-ext-provision-metadata
 data:
   liferay-sample-commerce-shipping-engine.client-extension-config.json: |-
