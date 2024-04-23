@@ -1,0 +1,51 @@
+{{- if .Values.vi_three_private.batch.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vi-three-private-batch
+spec:
+  backoffLimit: 3
+  parallelism: 1
+  template:
+    spec:
+      hostAliases:
+      - ip: "10.43.51.23"
+        hostnames:
+        - "vi.three.private"
+      containers:
+      - env:
+        - name: LIFERAY_BATCH_OAUTH_APP_ERC
+          value: liferay-sample-batch-oauth-application-headless-server
+        - name: LIFERAY_ROUTES_CLIENT_EXTENSION
+          value: /etc/liferay/lxc/ext-init-metadata
+        - name: LIFERAY_ROUTES_DXP
+          value: /etc/liferay/lxc/dxp-metadata
+        image: registry:5000/liferay-sample-batch:latest
+        imagePullPolicy: IfNotPresent
+        name: liferaysamplebatch
+        resources:
+          limits:
+            cpu: 200m
+            memory: 300Mi
+          requests:
+            cpu: 41m
+            memory: 225Mi
+        volumeMounts:
+        - mountPath: /etc/liferay/lxc/dxp-metadata
+          name: lxc-dxp-metadata
+          readOnly: true
+        - mountPath: /etc/liferay/lxc/ext-init-metadata
+          name: lxc-ext-init-metadata
+          readOnly: true
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: vi.three.private-lxc-dxp-metadata
+        name: lxc-dxp-metadata
+      - configMap:
+          defaultMode: 420
+          name: liferaysamplebatchserviceid-vi.three.private-lxc-ext-init-metadata
+        name: lxc-ext-init-metadata
+{{- end -}}

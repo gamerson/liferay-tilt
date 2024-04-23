@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "labels" . | nindent 4 }}
 spec:
+  clusterIP: 10.43.51.23
   type: ClusterIP
   selector:
     {{- include "selectorLabels" . | nindent 4 }}
