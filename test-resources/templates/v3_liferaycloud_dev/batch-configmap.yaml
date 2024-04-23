@@ -1,4 +1,4 @@
-{{- if .Values.v2_liferaycloud_dev.batch.enabled -}}
+{{- if .Values.v3_liferaycloud_dev.batch.config.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,12 +7,12 @@ metadata:
     ext.lxc.liferay.com/domains: liferaysamplebatch.lfr.dev
   labels:
     lxc.liferay.com/metadataType: ext-provision
-    dxp.lxc.liferay.com/virtualInstanceId: v2.liferaycloud.dev
+    dxp.lxc.liferay.com/virtualInstanceId: v3.liferaycloud.dev
     ext.lxc.liferay.com/projectUid: liferaysamplebatchprojectuid
     ext.lxc.liferay.com/projectId: liferaysamplebatchprojectid
     ext.lxc.liferay.com/serviceUid: liferaysamplebatchserviceuid
     ext.lxc.liferay.com/serviceId: liferaysamplebatchserviceid
-  name: liferaysamplebatch-v2.liferaycloud.dev-lxc-ext-provision-metadata
+  name: liferaysamplebatch-v3.liferaycloud.dev-lxc-ext-provision-metadata
 data:
   liferay-sample-batch.client-extension-config.json: |
     {

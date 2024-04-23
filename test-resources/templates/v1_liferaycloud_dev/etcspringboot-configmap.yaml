@@ -1,4 +1,4 @@
-{{- if .Values.v3_liferaycloud_dev.etcspringboot.enabled -}}
+{{- if .Values.v1_liferaycloud_dev.etcspringboot.config.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,12 +7,12 @@ metadata:
     ext.lxc.liferay.com/domains: liferaysampleetcspringboot.lfr.dev
   labels:
     lxc.liferay.com/metadataType: ext-provision
-    dxp.lxc.liferay.com/virtualInstanceId: v3.liferaycloud.dev
+    dxp.lxc.liferay.com/virtualInstanceId: v1.liferaycloud.dev
     ext.lxc.liferay.com/projectUid: yolgksvunebrmpihkr
     ext.lxc.liferay.com/projectId: exts8h5troubleshoot-extprd
     ext.lxc.liferay.com/serviceUid: wjbwlbihembtwsqqke
     ext.lxc.liferay.com/serviceId: liferaysampleetcspringboot
-  name: liferaysampleetcspringboot-v3.liferaycloud.dev-lxc-ext-provision-metadata
+  name: liferaysampleetcspringboot-v1.liferaycloud.dev-lxc-ext-provision-metadata
 data:
   liferay-sample-etc-spring-boot.client-extension-config.json: |-
     {
@@ -46,7 +46,7 @@ data:
         "projectId" : "liferaysampleetcspringboot",
         "projectName" : "liferay-sample-etc-spring-boot",
         "properties" : [ ],
-        "scopes" : [ "Liferay.Headless.Admin.Workflow.everything", "c_sample.everything" ],
+        "scopes" : [ "Liferay.Headless.Admin.Workflow.everything" ],
         "sourceCodeURL" : "",
         "type" : "oAuthApplicationUserAgent",
         "typeSettings" : [ ".serviceScheme=http", "scopes=Liferay.Headless.Admin.Workflow.everything", ".serviceAddress=localhost:58081" ],

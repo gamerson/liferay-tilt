@@ -1,39 +1,57 @@
 v1_liferaycloud_dev:
   batch:
-    enabled: false
+    config:
+      enabled: false
   iframe1:
-    enabled: false
+    config:
+      enabled: false
   instancesettings:
-    enabled: false
+    config:
+      enabled: false
   etcspringboot:
-    enabled: false
+    config:
+      enabled: false
   commercepaymentintegration:
-    enabled: false
+    config:
+      enabled: false
   commerceshippingengine:
-    enabled: false
+    config:
+      enabled: false
 v2_liferaycloud_dev:
   batch:
-    enabled: false
+    config:
+      enabled: false
   iframe1:
-    enabled: false
+    config:
+      enabled: false
   instancesettings:
-    enabled: false
+    config:
+      enabled: false
   etcspringboot:
-    enabled: false
+    config:
+      enabled: false
   commercepaymentintegration:
-    enabled: false
+    config:
+      enabled: false
   commerceshippingengine:
-    enabled: false
+    config:
+      enabled: false
 v3_liferaycloud_dev:
   batch:
-    enabled: true
+    config:
+      enabled: true
   iframe1:
-    enabled: false
+    config:
+      enabled: false
   instancesettings:
-    enabled: false
+    config:
+      enabled: false
   etcspringboot:
-    enabled: true
+    config:
+      enabled: true
   commercepaymentintegration:
-    enabled: false
+    config:
+      enabled: false
   commerceshippingengine:
-    enabled: false
+    config:
+      enabled: false

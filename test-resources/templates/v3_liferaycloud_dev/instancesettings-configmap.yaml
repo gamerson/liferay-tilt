@@ -1,4 +1,4 @@
-{{- if .Values.v3_liferaycloud_dev.instancesettings.enabled -}}
+{{- if .Values.v3_liferaycloud_dev.instancesettings.config.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
