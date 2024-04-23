@@ -1,4 +1,4 @@
-{{- if .Values.vi_three_private.iframe1.enabled -}}
+{{- if .Values.v1_liferaycloud_dev.iframe1.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,12 +7,12 @@ metadata:
     ext.lxc.liferay.com/domains: liferaysampleiframe1.lfr.dev
   labels:
     lxc.liferay.com/metadataType: ext-provision
-    dxp.lxc.liferay.com/virtualInstanceId: vi.three.private
+    dxp.lxc.liferay.com/virtualInstanceId: v1.liferaycloud.dev
     ext.lxc.liferay.com/projectUid: liferaysampleiframe1projectuid
     ext.lxc.liferay.com/projectId: liferaysampleiframe1projectid
     ext.lxc.liferay.com/serviceUid: liferaysampleiframe1serviceuid
     ext.lxc.liferay.com/serviceId: liferaysampleiframe1serviceid
-  name: liferaysampleiframe1-vi.three.private-lxc-ext-provision-metadata
+  name: liferaysampleiframe1-v1.liferaycloud.dev-lxc-ext-provision-metadata
 data:
   liferay-sample-iframe-1.client-extension-config.json: |
     {

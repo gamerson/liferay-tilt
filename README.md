@@ -10,14 +10,6 @@ Install these tools first:
 * k3d (simplest via `brew install k3d`)
 * tilt (simplest via `brew install tilt`)
 
-Edit your system's host file so the following domains resolve to your `localhost` address:
-
-```
-120.0.0.1 vi.one.private
-120.0.0.1 vi.two.private
-120.0.0.1 vi.three.private
-```
-
 Run this to create a k3d cluster (with local docker registry):
 
 ```shell
@@ -60,15 +52,15 @@ k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create regi
 
   Then you can access the default virtual instance at the address:
 
-  http://vi.one.private:8080
+  http://v1.liferaycloud.dev:8080
 
   You can access the other virtual instances at:
 
-  http://vi.two.private:8080
+  http://v2.liferaycloud.dev:8080
 
   and
 
-  http://vi.three.private:8080
+  http://v3.liferaycloud.dev:8080
 
 * Stop the k3d cluster when you're done to recover the resources. (K3d will keep running in the background even after system restarts if you let it.)
 

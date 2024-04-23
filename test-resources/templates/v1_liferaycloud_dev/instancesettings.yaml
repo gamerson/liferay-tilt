@@ -1,4 +1,4 @@
-{{- if .Values.vi_two_private.instancesettings.enabled -}}
+{{- if .Values.v1_liferaycloud_dev.instancesettings.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,12 +7,12 @@ metadata:
     ext.lxc.liferay.com/domains: liferaysampleinstancesettings.lfr.dev
   labels:
     lxc.liferay.com/metadataType: ext-provision
-    dxp.lxc.liferay.com/virtualInstanceId: vi.two.private
+    dxp.lxc.liferay.com/virtualInstanceId: v1.liferaycloud.dev
     ext.lxc.liferay.com/projectUid: liferaysampleinstancesettingsprojectuid
     ext.lxc.liferay.com/projectId: liferaysampleinstancesettingsprojectid
     ext.lxc.liferay.com/serviceUid: liferaysampleinstancesettingsserviceuid
     ext.lxc.liferay.com/serviceId: liferaysampleinstancesettingsserviceid
-  name: liferaysampleinstancesettings-vi.two.private-lxc-ext-provision-metadata
+  name: liferaysampleinstancesettings-v1.liferaycloud.dev-lxc-ext-provision-metadata
 data:
   liferay-sample-instance-settings-d2q5j1.client-extension-config.json: |
     {

@@ -1,4 +1,4 @@
-vi_one_private:
+v1_liferaycloud_dev:
   batch:
     enabled: false
   iframe1:
@@ -11,7 +11,7 @@ vi_one_private:
     enabled: false
   commerceshippingengine:
     enabled: false
-vi_two_private:
+v2_liferaycloud_dev:
   batch:
     enabled: false
   iframe1:
@@ -24,7 +24,7 @@ vi_two_private:
     enabled: false
   commerceshippingengine:
     enabled: false
-vi_three_private:
+v3_liferaycloud_dev:
   batch:
     enabled: true
   iframe1:

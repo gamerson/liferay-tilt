@@ -1,4 +1,4 @@
-{{- if .Values.vi_three_private.batch.enabled -}}
+{{- if .Values.v3_liferaycloud_dev.batch.enabled -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -11,7 +11,7 @@ spec:
       hostAliases:
       - ip: "10.43.51.23"
         hostnames:
-        - "vi.three.private"
+        - "v3.liferaycloud.dev"
       containers:
       - env:
         - name: LIFERAY_BATCH_OAUTH_APP_ERC
@@ -42,10 +42,10 @@ spec:
       volumes:
       - configMap:
           defaultMode: 420
-          name: vi.three.private-lxc-dxp-metadata
+          name: v3.liferaycloud.dev-lxc-dxp-metadata
         name: lxc-dxp-metadata
       - configMap:
           defaultMode: 420
-          name: liferaysamplebatchserviceid-vi.three.private-lxc-ext-init-metadata
+          name: liferaysamplebatchserviceid-v3.liferaycloud.dev-lxc-ext-init-metadata
         name: lxc-ext-init-metadata
 {{- end -}}
