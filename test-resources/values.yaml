@@ -1,4 +1,5 @@
-v1_liferaycloud_dev:
+domainBase: "localtest.me"
+vi1:
   batch:
     config:
       enabled: false
@@ -17,7 +18,7 @@ v1_liferaycloud_dev:
   commerceshippingengine:
     config:
       enabled: false
-v2_liferaycloud_dev:
+vi2:
   batch:
     config:
       enabled: false
@@ -36,7 +37,7 @@ v2_liferaycloud_dev:
   commerceshippingengine:
     config:
       enabled: false
-v3_liferaycloud_dev:
+vi3:
   batch:
     config:
       enabled: true

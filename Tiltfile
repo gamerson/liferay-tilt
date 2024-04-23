@@ -54,6 +54,7 @@ helm_resource(
 	flags=[
 		'--set=image=liferay-tilt/dxp',
 		'--set=replicas=%s' % liferay_replicas,
+		'--set=domainBase=%s' % configFile.get('domainBase'),
 	],
 	image_deps=['liferay-tilt/dxp'],
 	image_keys=['image'],
@@ -71,6 +72,9 @@ helm_resource(
 	chart='./test-resources',
 	deps=[
 		'./test-resources',
+	],
+	flags=[
+		'--set=domainBase=%s' % configFile.get('domainBase'),
 	],
 	resource_deps=[
 		'dxp',

@@ -1,4 +1,4 @@
-{{- if .Values.v3_liferaycloud_dev.commerceshippingengine.config.enabled -}}
+{{- if .Values.vi2.commerceshippingengine.config.enabled -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,12 +7,12 @@ metadata:
     ext.lxc.liferay.com/mainDomain: liferaysamplecommerceshippingengine.lfr.dev
   labels:
     lxc.liferay.com/metadataType: ext-provision
-    dxp.lxc.liferay.com/virtualInstanceId: v3.liferaycloud.dev
+    dxp.lxc.liferay.com/virtualInstanceId: vi2.{{ .Values.domainBase }}
     ext.lxc.liferay.com/projectUid: yolgksvunebrmpihkr
     ext.lxc.liferay.com/projectId: exts8h5troubleshoot-extprd
     ext.lxc.liferay.com/serviceUid: idlcjehanvlzjuqhvi
     ext.lxc.liferay.com/serviceId: liferaysamplecommerceshippingengine
-  name: liferaysamplecommerceshippingengine-v3.liferaycloud.dev-lxc-ext-provision-metadata
+  name: liferaysamplecommerceshippingengine-vi2.{{ .Values.domainBase }}-lxc-ext-provision-metadata
 data:
   liferay-sample-commerce-shipping-engine.client-extension-config.json: |-
     {

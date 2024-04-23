@@ -52,15 +52,15 @@ k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create regi
 
   Then you can access the default virtual instance at the address:
 
-  http://v1.liferaycloud.dev:8080
+  http://vi1.localtest.me:8080
 
   You can access the other virtual instances at:
 
-  http://v2.liferaycloud.dev:8080
+  http://vi2.localtest.me:8080
 
   and
 
-  http://v3.liferaycloud.dev:8080
+  http://vi3.localtest.me:8080
 
 * Stop the k3d cluster when you're done to recover the resources. (K3d will keep running in the background even after system restarts if you let it.)
 

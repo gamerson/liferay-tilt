@@ -1,8 +1,8 @@
-{{- if .Values.v3_liferaycloud_dev.batch.workload.enabled -}}
+{{- if .Values.vi3.batch.workload.enabled -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: v3-liferaycloud-dev-batch
+  name: vi3.{{ .Values.domainBase }}-batch
 spec:
   backoffLimit: 3
   parallelism: 1
@@ -11,7 +11,7 @@ spec:
       hostAliases:
       - ip: "10.43.51.23"
         hostnames:
-        - "v3.liferaycloud.dev"
+        - "vi3.{{ .Values.domainBase }}"
       containers:
       - env:
         - name: LIFERAY_BATCH_OAUTH_APP_ERC
@@ -42,10 +42,10 @@ spec:
       volumes:
       - configMap:
           defaultMode: 420
-          name: v3.liferaycloud.dev-lxc-dxp-metadata
+          name: vi3.{{ .Values.domainBase }}-lxc-dxp-metadata
         name: lxc-dxp-metadata
       - configMap:
           defaultMode: 420
-          name: liferaysamplebatchserviceid-v3.liferaycloud.dev-lxc-ext-init-metadata
+          name: liferaysamplebatchserviceid-vi3.{{ .Values.domainBase }}-lxc-ext-init-metadata
         name: lxc-ext-init-metadata
 {{- end -}}

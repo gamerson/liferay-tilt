@@ -1,2 +1,3 @@
+domainBase: localtest.me
 image: liferay/dxp:2023.q4.6
 replicas: 1

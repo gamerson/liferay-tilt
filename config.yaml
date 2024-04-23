@@ -1,3 +1,4 @@
+domainBase: localtest.me
 dxp:
   # the DXP docker image to run
   image: liferay/dxp:7.4.13.nightly
