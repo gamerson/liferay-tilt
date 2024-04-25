@@ -5,18 +5,20 @@ System Requirements:
 * 8 (logical) CPUs minimum
 
 Install these tools first:
-* docker (use whichever platform compatible implementation is most suitable to you)
-* kubectl (simplest via `brew install kubectl`)
-* k3d (simplest via `brew install k3d`)
-* tilt (simplest via `brew install tilt`)
+* `docker` (use whichever platform compatible implementation is most suitable to you)
+* `kubectl` (simplest via `brew install kubectl`)
+* `k3d` (simplest via `brew install k3d`)
+* `tilt` (simplest via `brew install tilt`)
 
 Run this to create a k3d cluster (with local docker registry):
 
 ```shell
-k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create registry:0.0.0.0:5000
+k3d cluster create liferay-tilt -p "8880:80@loadbalancer" --registry-create registry:0.0.0.0:5000
 ```
 
 # Tilt/k3d usage
+
+* Starting in the root of the repository.
 
 * To bring everything up with defaults
 
@@ -38,25 +40,29 @@ k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create regi
   tilt down
   ```
 
-* When `tilt` is "up" access the Tilt UI at
+## When `tilt` is `up`
+
+* Access the Tilt UI at
 
   http://localhost:10350/r/(all)/overview
 
-* When `tilt` is "up" you'll likely want to access DXP.
+* You can access the default virtual instance at the address:
 
-  You can access the default virtual instance at the address:
-
-  http://vi1.localtest.me:8080
+  http://vi1.localtest.me:8880
 
   You can access the other virtual instances at:
 
-  http://vi2.localtest.me:8080
+  http://vi2.localtest.me:8880
 
   and
 
-  http://vi3.localtest.me:8080
+  http://vi3.localtest.me:8880
 
-* Stop the k3d cluster when you're done to recover the resources. (K3d will keep running in the background even after system restarts if you let it.)
+## The K3d cluster
+
+K3d runs in the background and uses resources even after system restarts if you let it (as part if it's mission of being resilient).
+
+* Stop the k3d cluster when you're done with it to recover the resources
 
   ```shell
   k3d cluster stop liferay-tilt
@@ -70,29 +76,38 @@ k3d cluster create liferay-tilt -p "8080:80@loadbalancer" --registry-create regi
   tilt up
   ```
 
-## Debug a specific Liferay pod
+## Connect to specific Liferay replicas
 
-To open ports directly to a specific Liferay pod, run the following command:
+To open ports directly to a specific Liferay replica, run the following command:
 
+> __Note:__ Replicas are integer indexed from `0`.
+
+```shell
+# specify the replica to connect to
+REPLICA="#" # e.g. 0
+
+kubectl port-forward dxp-${REPLICA} \
+  808${REPLICA}:8080 \
+  800${REPLICA}:8000 \
+  1131${REPLICA}:11311
 ```
-kubectl port-forward dxp-0 9080:8080 8000:8000 11310:11311
-```
 
-> __Note:__ Port 8080 is already mapped by the load balancer / ingress which points to the `dxp` service backends. So use a different port to directly access the pod port 8080. In the example above we used `9080`.
+### Debug a specific Liferay replica
 
-> __Note:__ This port-forward targets the first "pod" or "replica" of DXP. If you have configured more than one replica and want to interact with them directly you can specify a different suffix to the port-forward argument `dxp-0` (replicas are integer indexed from `0`) and specifying a different port for each forward (e.g. `... dxp-1 8081:8080 8001:8000 11311:11311` and so on).
+To remote debug replica `dxp-${REPLICA}` use the address: `localhost:800${REPLICA}`.
 
-Now, to connect a remote debugger to replica `dxp-0` use the address: `localhost:8000`.
+### Gogo Shell to a specific Liferay replica
 
-## Telnet to the gogo shell of a a specific Liferay pod
+Telnet to `dxp-${REPLICA}` using the command: `telnet localhost 1131${REPLICA}`
 
-Telnet to `dxp-0` using the command: `telnet localhost 11310`
+## Configuration (`config.yaml`)
 
-## Use a different (even custom) Liferay image
+The `config.yaml` in the root of the repository enables you to fine tune details for your use case.
 
-Edit `config.yaml` and set the value of `dxp.image`.
+### Use a different (even custom) Liferay image
 
-## Increase the number of Liferay replicas
+Set the value of `dxp.image` to the name of the docker image you wish to use.
 
-First you need to place a cluster license in `dxp-docker-root/deploy`. Then
-edit `config.yaml` and set the value of `dxp.replicas` to a number higher than 1.
+### Increase the number of Liferay replicas
+
+First you need to place a cluster license in `dxp-docker-root/deploy`. Then set the value of `dxp.replicas` to a number higher than 1.
