@@ -6,7 +6,28 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - http:
+  - host: "vi1.{{ .Values.domainBase }}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "fullname" . }}
+            port:
+              number: 80
+  - host: "vi2.{{ .Values.domainBase }}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "fullname" . }}
+            port:
+              number: 80
+  - host: "vi3.{{ .Values.domainBase }}"
+    http:
       paths:
       - path: /
         pathType: Prefix
