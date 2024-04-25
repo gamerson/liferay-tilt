@@ -32,7 +32,6 @@ spec:
         - name: LIFERAY_ROUTES_DXP
           value: /etc/liferay/lxc/dxp-metadata
         image: registry:5000/liferay-sample-batch:latest
-        imagePullPolicy: IfNotPresent
         name: liferaysamplebatch
         resources:
           limits:

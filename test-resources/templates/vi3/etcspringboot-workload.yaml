@@ -42,8 +42,7 @@ spec:
           value: /etc/liferay/lxc/ext-init-metadata
         - name: LIFERAY_ROUTES_DXP
           value: /etc/liferay/lxc/dxp-metadata
-        image: registry:5000/liferay-sample-etc-spring-boot:20240423170343931
-        imagePullPolicy: IfNotPresent
+        image: registry:5000/liferay-sample-etc-spring-boot:latest
         lifecycle:
           preStop:
             exec:
