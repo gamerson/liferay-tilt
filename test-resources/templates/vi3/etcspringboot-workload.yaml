@@ -101,4 +101,45 @@ spec:
           defaultMode: 420
           name: liferaysampleetcspringboot-serviceid-vi3-vi3.{{ .Values.domainBase }}-lxc-ext-init-metadata
         name: lxc-ext-init-metadata
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: liferaysampleetcspringboot-vi3
+  labels:
+    projectUid: liferaysampleetcspringboot-projectuid-vi3
+    projectId: liferaysampleetcspringboot-projectid-vi3
+    serviceUid: liferaysampleetcspringboot-serviceuid-vi3
+    serviceId: liferaysampleetcspringboot-serviceid-vi3
+spec:
+  type: ClusterIP
+  selector:
+    projectUid: liferaysampleetcspringboot-projectuid-vi3
+    projectId: liferaysampleetcspringboot-projectid-vi3
+    serviceUid: liferaysampleetcspringboot-serviceuid-vi3
+    serviceId: liferaysampleetcspringboot-serviceid-vi3
+  ports:
+    - name: http
+      port: 80
+      targetPort: 58081
+      protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: liferaysampleetcspringboot-vi3
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: "liferaysampleetcspringboot-vi3.{{ .Values.domainBase }}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: liferaysampleetcspringboot-vi3
+            port:
+              number: 80
 {{- end -}}
