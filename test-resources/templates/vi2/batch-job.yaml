@@ -1,0 +1,61 @@
+{{- if .Values.vi2.batch.workload.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    projectUid: liferaysamplebatch-projectuid-vi2
+    projectId: liferaysamplebatch-projectid-vi2
+    serviceUid: liferaysamplebatch-serviceuid-vi2
+    serviceId: liferaysamplebatch-serviceid-vi2
+  name: liferaysamplebatch-vi2
+spec:
+  backoffLimit: 3
+  parallelism: 1
+  template:
+    spec:
+      metadata:
+        labels:
+          projectUid: liferaysamplebatch-projectuid-vi2
+          projectId: liferaysamplebatch-projectid-vi2
+          serviceUid: liferaysamplebatch-serviceuid-vi2
+          serviceId: liferaysamplebatch-serviceid-vi2
+      hostAliases:
+      - ip: "10.43.51.23"
+        hostnames:
+        - "vi2.{{ .Values.domainBase }}"
+      containers:
+      - env:
+        - name: LIFERAY_BATCH_OAUTH_APP_ERC
+          value: liferay-sample-batch-oauth-application-headless-server
+        - name: LIFERAY_ROUTES_CLIENT_EXTENSION
+          value: /etc/liferay/lxc/ext-init-metadata
+        - name: LIFERAY_ROUTES_DXP
+          value: /etc/liferay/lxc/dxp-metadata
+        image: registry:5000/liferay-sample-batch:latest
+        name: liferaysamplebatch
+        resources:
+          limits:
+            cpu: 200m
+            memory: 300Mi
+          requests:
+            cpu: 41m
+            memory: 225Mi
+        volumeMounts:
+        - mountPath: /etc/liferay/lxc/dxp-metadata
+          name: lxc-dxp-metadata
+          readOnly: true
+        - mountPath: /etc/liferay/lxc/ext-init-metadata
+          name: lxc-ext-init-metadata
+          readOnly: true
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: vi2.{{ .Values.domainBase }}-lxc-dxp-metadata
+        name: lxc-dxp-metadata
+      - configMap:
+          defaultMode: 420
+          name: liferaysamplebatch-serviceid-vi2-vi2.{{ .Values.domainBase }}-lxc-ext-init-metadata
+        name: lxc-ext-init-metadata
+{{- end -}}

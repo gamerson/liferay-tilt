@@ -3,6 +3,8 @@ vi1:
   batch:
     config:
       enabled: false
+    workload:
+      enabled: false
   iframe1:
     config:
       enabled: false
@@ -21,6 +23,8 @@ vi1:
 vi2:
   batch:
     config:
+      enabled: false
+    workload:
       enabled: false
   iframe1:
     config:
