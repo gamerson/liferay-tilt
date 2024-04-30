@@ -40,7 +40,7 @@ FROM %s
 COPY --chown=liferay:liferay deploy /opt/liferay/deploy
 COPY --chown=liferay:liferay osgi /opt/liferay/osgi
 COPY --chown=liferay:liferay portal-ext.properties /opt/liferay/portal-ext.properties
-COPY --chown=liferay:liferay shielded-container-lib /opt/liferay/tomcat/webapps/ROOT/WEB-INF/shielded-container-lib
+COPY --chown=liferay:liferay tomcat /opt/liferay/tomcat
 COPY --chown=liferay:liferay unicast.xml /opt/liferay/unicast.xml
 ''' % (configFile.get('dxp').get('image')),
 )

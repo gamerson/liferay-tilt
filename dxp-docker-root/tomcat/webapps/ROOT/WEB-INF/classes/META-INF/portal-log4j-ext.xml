@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<Configuration strict="true">
+	<Loggers>
+		<!--
+		<Logger level="DEBUG" name="com.liferay.portal.db.partition.util" />
+		<Logger level="DEBUG" name="org.hibernate.SQL" />
+		<Logger level="DEBUG" name="org.hibernate.engine.jdbc.batch" />
+		<Logger level="DEBUG" name="org.hibernate.type.descriptor.sql.BasicBinder" />
+		-->
+	</Loggers>
+</Configuration>
