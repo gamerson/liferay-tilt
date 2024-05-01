@@ -106,6 +106,7 @@ The `Tilefile` is setup to support 3 configuration properties:
 
 * __`domainBase`__ (default `localtest.me`) - The base domain used for all domains (resolves globally to `127.0.0.1` which makes it convenient for testing.)
 * __`dxpDockerTag`__ (default `liferay/dxp:latest`) - Set the docker tag of the Liferay service you want to run.
+* __`mysqlVolumePolicy`__ (default `Retain`) - Set whether the mysql db is deleted or not. Options are `Retain` or `Delete`.
 * __`replicas`__ (default `1`) - The number of replicas of the Liferay service to keep online.
 
 To override the defaults permanently, create a `tilt_config.json` in the root of the repository and set place the properties as the root keys of a JSON map.

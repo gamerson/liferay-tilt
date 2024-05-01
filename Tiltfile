@@ -14,6 +14,9 @@ DOMAIN_BASE_DEFAULT='localtest.me'
 config.define_string('dxpDockerTag')
 DXP_DOCKER_TAG_DEFAULT='liferay/dxp:latest'
 
+config.define_string('mysqlVolumePolicy')
+MYSQL_VOLUME_POLICY_DEFAULT='Retain'
+
 config.define_string('replicas')
 REPLICAS_DEFAULT='1'
 
@@ -25,6 +28,8 @@ helm_resource(
 	name='mysql',
 	chart='oci://registry-1.docker.io/bitnamicharts/mysql',
 	flags=[
+		'--set=primary.persistentVolumeClaimRetentionPolicy.whenDeleted=%s'
+			% cfg.get('mysqlVolumePolicy', MYSQL_VOLUME_POLICY_DEFAULT),
 		'-f',
 		'%s/charts/mysql/values.yaml' % os.getcwd(),
 	],

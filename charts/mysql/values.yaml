@@ -11,4 +11,4 @@ initdbScripts:
 primary:
   persistentVolumeClaimRetentionPolicy:
     enabled: true
-    whenDeleted: Delete
+    whenDeleted: Retain
