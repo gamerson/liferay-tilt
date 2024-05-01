@@ -82,18 +82,3 @@ helm_resource(
 	],
 	labels='test-resources',
 )
-
-# ----- Nuke Data -----
-
-local_resource(
-	name='drop-database',
-	cmd='./drop-database.sh',
-	cmd_bat='./drop-database.cmd',
-	trigger_mode=TRIGGER_MODE_MANUAL,
-	auto_init=False,
-	resource_deps=[
-		'mysql',
-		'dxp',
-	],
-	labels='z-drop-database'
-)
