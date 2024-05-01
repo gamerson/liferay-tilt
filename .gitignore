@@ -1,3 +1,4 @@
+tilt_config.json
 dxp-docker-root/deploy/*.xml
 dxp-docker-root/osgi/portal
 dxp-docker-root/osgi/static

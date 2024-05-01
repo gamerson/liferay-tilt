@@ -3,19 +3,21 @@
 load('ext://helm_resource', 'helm_resource')
 load('ext://uibutton', 'cmd_button', 'location')
 
-# ----- Load Configuration from config.yaml -----
-
-configFile = read_yaml('./config.yaml')
-
 # ----- Global Variables -----
 
 # Set to True to enable clustering
 # TODO add support for DBStore for DocLib and Elasticsearch
-config.define_string("replicas")
+
+config.define_string('domainBase')
+DOMAIN_BASE_DEFAULT='localtest.me'
+
+config.define_string('dxpDockerTag')
+DXP_DOCKER_TAG_DEFAULT='liferay/dxp:latest'
+
+config.define_string('replicas')
+REPLICAS_DEFAULT='1'
 
 cfg = config.parse()
-liferay_replicas = cfg.get(
-	"replicas", configFile.get('dxp').get('replicas'))
 
 # ----- MySQL -----
 
@@ -42,7 +44,7 @@ COPY --chown=liferay:liferay osgi /opt/liferay/osgi
 COPY --chown=liferay:liferay portal-ext.properties /opt/liferay/portal-ext.properties
 COPY --chown=liferay:liferay tomcat /opt/liferay/tomcat
 COPY --chown=liferay:liferay unicast.xml /opt/liferay/unicast.xml
-''' % (configFile.get('dxp').get('image')),
+''' % (cfg.get('dxpDockerTag', DXP_DOCKER_TAG_DEFAULT)),
 )
 
 helm_resource(
@@ -53,8 +55,8 @@ helm_resource(
 	],
 	flags=[
 		'--set=image=liferay-tilt/dxp',
-		'--set=replicas=%s' % liferay_replicas,
-		'--set=domainBase=%s' % configFile.get('domainBase'),
+		'--set=replicas=%s' % cfg.get('replicas', REPLICAS_DEFAULT),
+		'--set=domainBase=%s' % cfg.get('domainBase', DOMAIN_BASE_DEFAULT),
 	],
 	image_deps=['liferay-tilt/dxp'],
 	image_keys=['image'],
@@ -73,7 +75,7 @@ helm_resource(
 		'./test-resources',
 	],
 	flags=[
-		'--set=domainBase=%s' % configFile.get('domainBase'),
+		'--set=domainBase=%s' % cfg.get('domainBase', DOMAIN_BASE_DEFAULT),
 	],
 	resource_deps=[
 		'dxp',

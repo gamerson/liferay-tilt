@@ -1,6 +1,0 @@
-domainBase: localtest.me
-dxp:
-  # the DXP docker image to run
-  image: liferay/dxp:7.4.13.nightly
-  # the number of DXP replicas (sets up a DXP cluster)
-  replicas: 1

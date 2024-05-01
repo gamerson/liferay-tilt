@@ -100,14 +100,20 @@ To remote debug replica `dxp-${REPLICA}` use the address: `localhost:800${REPLIC
 
 Telnet to `dxp-${REPLICA}` using the command: `telnet localhost 1131${REPLICA}`
 
-## Configuration (`config.yaml`)
+## Configuration (`tilt_config.json`)
 
-The `config.yaml` in the root of the repository enables you to fine tune details for your use case.
+The `Tilefile` is setup to support 3 configuration properties:
 
-### Use a different (even custom) Liferay image
+* __`domainBase`__ (default `localtest.me`) - The base domain used for all domains (resolves globally to `127.0.0.1` which makes it convenient for testing.)
+* __`dxpDockerTag`__ (default `liferay/dxp:latest`) - Set the docker tag of the Liferay service you want to run.
+* __`replicas`__ (default `1`) - The number of replicas of the Liferay service to keep online.
 
-Set the value of `dxp.image` to the name of the docker image you wish to use.
+To override the defaults permanently, create a `tilt_config.json` in the root of the repository and set place the properties as the root keys of a JSON map.
 
-### Increase the number of Liferay replicas
+e.g. `tilt_config.json`
 
-First you need to place a cluster license in `dxp-docker-root/deploy`. Then set the value of `dxp.replicas` to a number higher than 1.
+```json
+{
+  "dxpDockerTag": "liferay/dxp:7.4.13.nightly"
+}
+```
